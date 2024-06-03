@@ -1,0 +1,9 @@
+.login{
+    background-image: linear-gradient(#0000007e,#0000007e),url(../../../assets/background_banner.jpg);
+    height: 100vh;
+    padding: 20px 8%;
+}
+
+.login-form{
+    background: rgba(0,0,0,0.75);
+}

@@ -11,6 +11,7 @@ const Footer = () => {
         <img src={twt} alt="" className="h-10 w-10 cursor-pointer rounded-md"  />
         <img src={ins} alt="" className="h-10 w-10 cursor-pointer rounded-md"  />
         <img src={face} alt="" className="h-10 w-10 cursor-pointer rounded-md"  />
+        
       </div>
 
       <div className="grid grid-cols-4 w-full gap-1  mt-7 ml-[13rem]">
@@ -33,9 +34,9 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-1 text-white">
-          <p>Gift Cards</p>
           <p>Terms of Use</p>
           <p>Corporate Information</p>
+          <p>Gift Cards</p>
         </div>
       </div>
     </div>
