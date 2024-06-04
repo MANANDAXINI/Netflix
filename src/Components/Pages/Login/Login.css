@@ -7,3 +7,56 @@
 .login-form{
     background: rgba(0,0,0,0.75);
 }
+
+.login-form input{
+    background: #333;
+    color:white;
+    margin:12px 0;
+    border:0;
+    outline:0;
+    border-radius:4px;
+    padding:16px 20px;
+    font-size:16px
+}
+
+.login-form input::placeholder{
+    font-size:16px ;
+    font-weight:500;
+
+}
+
+.login-form button{
+    width:100%;
+    border:0;
+    outline:0;
+    padding:16px;
+    background: #e50914;
+    color:white;
+    border-radius:4px;
+    font-size:16px;
+    font-weight:500;
+    margin-top:20px;
+    cursor: pointer;
+}
+
+.form-help{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size:13px;
+    color:#b3b3b3;
+    
+
+}
+
+.remember{
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+
+.remember input{
+    width: 18px;
+    height: 18px;
+}
+
