@@ -1,12 +1,13 @@
 import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from 'react-router-dom';
 import "./Titlecards.css";
 
 const Titlecards = ({ title, searchQuery }) => {
     const cardRef = useRef();
     const [fetchedData, setFetchedData] = useState([]);
-
-    const apiKey = 'b336543d'; // Your OMDb API key
+    const navigate = useNavigate();
+    const apiKey = 'b336543d'; 
     const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`;
 
     const handleWheel = (event) => {
@@ -47,12 +48,20 @@ const Titlecards = ({ title, searchQuery }) => {
         };
     }, [url]); // Refetch when the URL changes
 
+    const handleClick = (movieId) => {
+        navigate(`/player/${movieId}`);
+    };
+
     return (
         <div className="titlecards mt-[50px] mb-[30px]">
             <h2 className="mb-[8px] text-white text-2xl text-left">{title}</h2>
             <div ref={cardRef} className="card-list flex gap-3 overflow-x-scroll scrollbar-hide pb-2">
                 {fetchedData.map((card, index) => (
-                    <div className="card min-w-[240px] flex-none" key={index}>
+                    <div 
+                        className="card min-w-[240px] flex-none cursor-pointer" 
+                        key={index} 
+                        onClick={() => handleClick(card.imdbID)}
+                    >
                         <img 
                             src={card.Poster} 
                             alt={card.Title} 
