@@ -48,15 +48,3 @@
     
 
 }
-
-.remember{
-    display: flex;
-    align-items: center;
-    gap:5px;
-}
-
-.remember input{
-    width: 18px;
-    height: 18px;
-}
-

@@ -5,6 +5,8 @@ import bellicon from "../../assets/bell_icon.svg";
 import prof from "../../assets/profile_img.png";
 import dropdown from "../../assets/caret_icon.svg";
 import "./Navbar.css"; // Import your CSS file for Navbar styles
+import { logout } from "../../firebase";
+
 
 const Navbar = () => {
   const navRef = useRef();
@@ -54,7 +56,7 @@ const Navbar = () => {
           <img src={dropdown} alt="Dropdown" />
 
           <div className="dropdown absolute top-full right-0 w-max py-[18px] px-[22px] rounded-sm underline z-10 hidden group-hover:block bg-white text-black">
-            <p className="text-sm cursor-pointer">Sign Out of Netflix</p>
+            <p className="text-sm cursor-pointer" onClick={logout}>Sign Out of Netflix</p>
           </div>
         </div>
       </div>
