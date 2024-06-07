@@ -2,13 +2,16 @@ import  { useState } from "react";
 import logo from "../../../../public/logo.png"; // Assuming logo path is correct
 import "../Login/Login.css"; // Assuming Login.css exists
 import {login,signup} from '../../../firebase'
+import netflix_spinner from '../../../assets/netflix_spinner.gif'
 const Login = () => {
   const [signInState, setSignInState] = useState("Sign In"); // Corrected variable name
   const[name,setName]=useState("");
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
+  const[loading,setloading]=useState(false)
 
   const user_auth = async (event)=>{
+    setloading(true);
     event.preventDefault();
     if(signInState==="Sign In"){
       await login(email,password);
@@ -17,6 +20,7 @@ const Login = () => {
     else{
       await signup(name,email,password);
     }
+    setloading(false);
   }
 
   const handleSignInUpToggle = () => {
@@ -24,6 +28,9 @@ const Login = () => {
   };
 
   return (
+    loading?<div className="login-spinner w-[100%] h-100vh flex items-center justify-center">
+      <img src={netflix_spinner} className="w-[60px]" alt="" />
+    </div>:
     <div className="login h-[100vh]">
       <img src={logo} alt="Netflix Logo" className="login-logo w-[150px]" />
       <div className="login-form w-full max-w-[450px] border-r-4 p-[60px] m-auto">

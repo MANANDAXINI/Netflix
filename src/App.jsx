@@ -1,18 +1,17 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import Home from "./Components/Pages/Home/Home";
-import Login from "./Components/Pages/Login/Login";
+import Home from './Components/Pages/Home/Home';
+import Login from './Components/Pages/Login/Login';
 import Player from './Components/Pages/Player/Player';
 import { auth } from './firebase';
-import { ToastContainer } from 'react-toastify'; // Import ToastContainer
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
-  const navigate = useNavigate(); // Correct spelling
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Monitor authentication state
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("Logged in");
@@ -23,16 +22,16 @@ const App = () => {
       }
     });
 
-    // Cleanup subscription on component unmount
     return () => unsubscribe();
-  }, [navigate]); // Add navigate to dependency array
+  }, [navigate]);
 
   return (
     <div>
-      <ToastContainer /> {/* Render toasts */}
+      <ToastContainer theme='dark' />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        {/* Change the route path to handle dynamic movie IDs */}
         <Route path='/player/:id' element={<Player />} />
       </Routes>
     </div>

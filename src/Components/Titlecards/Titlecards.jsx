@@ -1,29 +1,18 @@
 import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom';
-import "./Titlecards.css";
 
 const Titlecards = ({ title, searchQuery }) => {
     const cardRef = useRef();
     const [fetchedData, setFetchedData] = useState([]);
     const navigate = useNavigate();
-    const apiKey = 'b336543d'; // Your OMDb API key
-    const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`;
-
-    const handleWheel = (event) => {
-        event.preventDefault();
-        const scrollAmount = 50;
-        const isLeftRightScroll = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-
-        if (isLeftRightScroll) {
-            cardRef.current.scrollLeft += event.deltaX > 0 ? scrollAmount : -scrollAmount;
-        }
-    };
+    const omdbApiKey = 'b336543d'; // Your OMDb API key
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
+                // Fetch movie data from OMDB
+                const response = await fetch(`http://www.omdbapi.com/?apikey=${omdbApiKey}&s=${searchQuery}`);
                 const result = await response.json();
 
                 if (result.Response === "True") {
@@ -46,10 +35,20 @@ const Titlecards = ({ title, searchQuery }) => {
         return () => {
             currentRef.removeEventListener('wheel', handleWheel);
         };
-    }, [url]); // Refetch when the URL changes
+    }, [searchQuery, omdbApiKey]); // Refetch when the searchQuery or omdbApiKey changes
 
-    const handleClick = (movieId) => {
-        navigate(`/player/${movieId}`);
+    const handleWheel = (event) => {
+        event.preventDefault();
+        const scrollAmount = 50;
+        const isLeftRightScroll = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+
+        if (isLeftRightScroll) {
+            cardRef.current.scrollLeft += event.deltaX > 0 ? scrollAmount : -scrollAmount;
+        }
+    };
+
+    const handleClick = (imdbID) => {
+        navigate(`/player/${imdbID}`);
     };
 
     return (

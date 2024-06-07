@@ -8,6 +8,11 @@ import Titlecards from "../../Titlecards/Titlecards";
 import Footer from "../../Footer/Footer";
 
 const Home = () => {
+  const handlePlayClick = () => {
+    // Open the YouTube trailer URL in a new tab
+    window.open('https://www.youtube.com/watch?v=sBEvEcpnG7k', '_blank');
+  };
+
   return (
     <div className="home">
       <Navbar />
@@ -20,7 +25,7 @@ const Home = () => {
             Discovering his ties to a secret ancient order, a young man living in modern Istanbul embarks on a quest to save the city from an immortal enemy
           </p>
           <div className="herobtns flex gap-3 mb-[50px]">
-            <button className="btn border-0 outline-0 px-8 py-2 inline-flex items-center gap-3 text-lg font-semibold bg-white rounded-md">
+            <button className="btn border-0 outline-0 px-8 py-2 inline-flex items-center gap-3 text-lg font-semibold bg-white rounded-md" onClick={handlePlayClick}>
               <img src={play_icon} alt="" className="w-[25px]" /> Play
             </button>
             <button className="btn dark-btn text-white bg-opacity-75 bg-gray-700">
@@ -33,7 +38,6 @@ const Home = () => {
 
       <div className="morecards pl-[6%]">
         <Titlecards title="Blockbuster Movies" searchQuery="blockbuster" />
-       
         <Titlecards title="Upcoming" searchQuery="upcoming" />
         <Titlecards title="Top Picks For You" searchQuery="top picks" />
       </div>
