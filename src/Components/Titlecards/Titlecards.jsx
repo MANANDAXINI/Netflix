@@ -7,7 +7,7 @@ const Titlecards = ({ title, searchQuery }) => {
     const cardRef = useRef();
     const [fetchedData, setFetchedData] = useState([]);
     const navigate = useNavigate();
-    const apiKey = 'b336543d'; 
+    const apiKey = 'b336543d'; // Your OMDb API key
     const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`;
 
     const handleWheel = (event) => {

@@ -33,7 +33,7 @@ const Home = () => {
 
       <div className="morecards pl-[6%]">
         <Titlecards title="Blockbuster Movies" searchQuery="blockbuster" />
-        <Titlecards title="Only On Netflix" searchQuery="netflix original" />
+       
         <Titlecards title="Upcoming" searchQuery="upcoming" />
         <Titlecards title="Top Picks For You" searchQuery="top picks" />
       </div>
